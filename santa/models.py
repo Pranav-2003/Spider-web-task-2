@@ -37,7 +37,7 @@ class Group(db.Model):
     
 class Members(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
-    gno = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=False)
+    gno = db.Column(db.Integer, db.ForeignKey('group.sno'), nullable=False)
     gname = db.Column(db.String(30), nullable=False)
     uid = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String(20), nullable=False)
