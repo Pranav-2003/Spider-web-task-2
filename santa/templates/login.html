@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body class="bg">
+    <h1 class="header">SECRET SANTA</h1><br><br>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+       <div style="text-align:center;background-color:rgb(29, 170, 170);width:fit-content;margin-left:36vw;"> {{ message }} </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="login">
+    <p style="font-size:1.6rem;font-weight:bold;color:black;">LOGIN</p>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-container">
+            {{ form.email.label(class="input-text") }}<br>
+            {{ form.email(class="input") }}
+            {% if form.email.errors %}
+            {% for error in form.email.errors %}
+                    <span style="color:rgb(95, 24, 7);">{{ error }}</span>
+            {% endfor %}
+            {% endif %}
+            <br><br>
+            {{ form.password.label(class="input-text adjust") }}<br>
+            {{ form.password(class="input") }}<br>
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    <span style="color:rgb(95, 24, 7);">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+            <br><br>
+            {{ form.submit(class="btn-login") }}
+            <br><br>
+            <a href="{{ url_for('register') }}">Need an Account?  Register</a>
+    </form>
+    </div>
+</body>
+</html>

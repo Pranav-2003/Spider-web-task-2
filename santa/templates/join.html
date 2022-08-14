@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body class="bg">
+    <header>
+        <span style="font-size:1.8rem;">SECRET SANTA<span>
+        <div style="display:inline;">
+            <ul class="navigation">
+                <li><a href="{{ url_for('join') }}"> JOIN</a></li>
+                <li><a href="{{ url_for('create') }}">CREATE</a></li>
+                <li><a href="{{ url_for('account') }}">PROFILE</a></li>
+                <li><a href="{{ url_for('logout') }}">LOGOUT</a></li>
+            </ul>
+        </div>
+    </header>
+    <br><br>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div style="text-align:center;background-color:rgb(245, 128, 55);width:fit-content;margin-left:36vw;"> {{ message }} </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}<br>
+    <div style="text-align:center">
+    <h1>Join Group</h1>
+    </div>
+    <div class="block">
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}<br>
+      {{ form.searched.label}}<br>
+      {{ form.searched(class="inputbox") }}
+      {% if form.searched.errors %}
+              {% for error in form.searched.errors %}
+                  <span style="color:#eb510a;">{{ error }}</span>
+              {% endfor %}
+      {% endif %}
+      <br><br>
+      {{ form.submit(class="sub-btn") }}
+    </form><br>
+    </div><br><br>
+</body>
+</html>

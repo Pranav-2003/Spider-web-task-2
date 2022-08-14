@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body class="bg">
+    <h1 class="header">SECRET SANTA</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+       <p style="text-align:center;"> {{ message }} </p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}<br>
+    <div style="text-align:center">
+    <h1>Register Now!</h1>
+    </div>
+    <div class="block">
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}<br>
+      <label>{{ form.username.label}}</label><br>
+      {{ form.username(class="inputbox") }}
+      {% if form.username.errors %}
+              {% for error in form.username.errors %}
+                  <span style="color:#eb510a;">{{ error }}</span>
+              {% endfor %}
+      {% endif %}
+      <br><br>
+      {{ form.email.label}}<br>
+      {{ form.email(class="inputbox") }}
+      {% if form.email.errors %}
+              {% for error in form.email.errors %}
+                  <span style="color:#eb510a;">{{ error }}</span>
+              {% endfor %}
+      {% endif %}
+      <br><br>
+      {{ form.age.label}}<br>
+      {{ form.age(class="inputbox") }}
+      {% if form.age.errors %}
+              {% for error in form.age.errors %}
+                  <span style="color:#eb510a;">{{ error }}</span>
+              {% endfor %}
+      {% endif %}
+      <br><br>
+      {{ form.city.label}}<br>
+      {{ form.city(class="inputbox") }}
+      {% if form.city.errors %}
+              {% for error in form.city.errors %}
+                  <span style="color:#eb510a;">{{ error }}</span>
+              {% endfor %}
+      {% endif %}
+      <br><br>
+      {{ form.state.label}}<br>
+      {{ form.state(class="inputbox") }}
+      {% if form.state.errors %}
+              {% for error in form.state.errors %}
+                  <span style="color:#eb510a;">{{ error }}</span>
+              {% endfor %}
+      {% endif %}
+      <br><br>
+      {{ form.password.label}}<br>
+      {{ form.password(class="inputbox") }}
+      {% if form.password.errors %}
+              {% for error in form.password.errors %}
+                  <span style="color:#eb510a;">{{ error }}</span>
+              {% endfor %}
+      {% endif %}
+      <br><br>
+      {{ form.confirm_password.label}}<br>
+      {{ form.confirm_password(class="inputbox") }}
+      {% if form.confirm_password.errors %}
+              {% for error in form.confirm_password.errors %}
+                  <span style="color:#eb510a;">{{ error }}</span>
+              {% endfor %}
+      {% endif %}
+      <br><br>
+      {{ form.submit(class="sub-btn") }}
+    </form><br>
+    </div><br><br>
+</body>
+</html>
